@@ -15,10 +15,12 @@ public class PersonDemo {
         printPersons(arrayOfPerson);
 
         System.out.println("\nSort by age:");
-        sortByAge(arrayOfPerson);
+        Arrays.sort(arrayOfPerson);
+        printPersons(arrayOfPerson);
 
         System.out.println("\nSort by name:");
-        sortByName(arrayOfPerson);
+        Arrays.sort(arrayOfPerson, new PersonComparator());
+        printPersons(arrayOfPerson);
 
     }
 
@@ -37,16 +39,6 @@ public class PersonDemo {
         for (Person numberPerson : array) {
             System.out.println(numberPerson.getName() + ". Age = " + numberPerson.calculateAge());
         }
-    }
-
-    private static void sortByName(Person[] array) {
-        Arrays.sort(array, new PersonComparator());
-        printPersons(array);
-    }
-
-    private static void sortByAge(Person[] array) {
-        Arrays.sort(array);
-        printPersons(array);
     }
 
     private static Date createDate(int year, int month, int day) {
