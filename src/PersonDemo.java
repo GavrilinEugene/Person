@@ -19,7 +19,7 @@ public class PersonDemo {
         printPersons(arrayOfPerson);
 
         System.out.println("\nSort by name:");
-        Arrays.sort(arrayOfPerson, new PersonComparator());
+        Arrays.sort(arrayOfPerson, new PersonNameComparator());
         printPersons(arrayOfPerson);
 
     }

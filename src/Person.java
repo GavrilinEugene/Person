@@ -8,7 +8,7 @@ public class Person implements Comparable<Person> {
 
     public Person(String name, Date birthday, int passport) {
         this.name = name;
-        this.birthday = birthday;
+        this.birthday = (Date) birthday.clone();
         this.passport = passport;
     }
 
@@ -17,7 +17,7 @@ public class Person implements Comparable<Person> {
     }
 
     public Date getBirthday() {
-        return birthday;
+        return (Date) birthday.clone();
     }
 
     public int getPassport() {
@@ -37,13 +37,13 @@ public class Person implements Comparable<Person> {
     }
 
     @Override
-    public int compareTo(Person secondPerson) {
-        if (this.equals(secondPerson)) {
+    public int compareTo(Person second) {
+        if (this.equals(second)) {
             return 0;
         }
-        int comparableValue = calculateAge() - secondPerson.calculateAge();
+        int comparableValue = calculateAge() - second.calculateAge();
         if (comparableValue == 0) {
-            comparableValue = passport - secondPerson.passport;
+            comparableValue = passport - second.passport;
         }
         return comparableValue / Math.abs(comparableValue);
     }
